@@ -1,5 +1,5 @@
-<input [formControl]="searchTerm"/>
-<table class="table table-striped">
+<input [formControl]="searchTerm"  /><br/>
+<table class="table table-striped" *ngIf=results$>
     <thead>
         <tr>
             <th *ngFor="let i of headers">
@@ -8,10 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of data">
+        <tr *ngFor="let row of results$ | async">
             <td *ngFor="let i of headers">
                 <ngb-highlight [result]="row[i.key]" 
-                    [term]="searchTerm"></ngb-highlight> 
+                    [term]="term"></ngb-highlight> 
              </td>
         </tr>
     </tbody>
