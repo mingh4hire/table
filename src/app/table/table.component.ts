@@ -12,37 +12,39 @@ export class TableComponent implements OnInit {
 @Input()
 data: Array<any>;
 @Input()
-headers: Array<{key:string, val:string}>;
+headers: Array<{key: string, val:string}>;
 searchTerm: FormControl = new FormControl();
 page = 1;
 pageSize = 10;
 total:number;
-results$ ;
-
-
+results$: Observable<any> ;
+sorts = [];
   constructor() { 
   }
+  sort(arr: Array<any>, keys:Array<string>){
 
+  }
   filter(term:string):Array<any>{
     if (!term){
       return this.data;
     }
-    return this.data.filter(row=>{
+    const filtered = this.data.filter(row=>{
       for (const header of this.headers){
-        console.log(header.key, ' is hte key');
-        console.log(row[header.key], ' is the key value');
-        if (row[header.key]?.toString()?.indexOf(term) >= 0){
+         if (row[header.key]?.toString()?.toLowerCase().indexOf(term) >= 0){
             return true;
         }
       }
-    })
+    });
+    
+
   }
 
   ngOnInit(): void {
     console.log(2);
     console.log(1);
     this.total = this.data?.length;
-    this.results$ = this.searchTerm.valueChanges.pipe(startWith(''),
+    this.results$ = this.searchTerm.valueChanges.pipe(
+       startWith(''),
       map(term=>{
       return this.filter(term);
     }));
