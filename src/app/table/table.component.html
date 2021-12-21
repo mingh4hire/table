@@ -1,0 +1,31 @@
+<input [formControl]="searchTerm"/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let i of headers">
+                {{i.val}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of data">
+            <td *ngFor="let i of headers">
+                <ngb-highlight [result]="row[i.key]" 
+                    [term]="searchTerm"></ngb-highlight> 
+             </td>
+        </tr>
+    </tbody>
+</table>
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="total" [(page)]="page" [pageSize]="pageSize">
+    </ngb-pagination>
+
+    <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="pageSize">
+        <option [ngValue]="10">10 items per page</option>
+        <option [ngValue]="20">20 items per page</option>
+        <option [ngValue]="50">50 items per page</option>
+        <option [ngValue]="null">All items per page</option>
+    </select>
+  </div>
+
