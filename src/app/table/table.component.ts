@@ -12,30 +12,30 @@ export class TableComponent implements OnInit {
 @Input()
 data: Array<any>;
 @Input()
-headers: Array<{key: string, val:string}>;
+headers: Array<{key: string, val: string}>;
 searchTerm: FormControl = new FormControl();
 page = 1;
 pageSize = 10;
-total:number;
+total: number;
 results$: Observable<any> ;
 sorts = [];
-  constructor() { 
+  constructor() {
   }
-  sort(arr: Array<any>, keys:Array<string>){
+  sort(arr: Array<any>, keys: Array<string>){
 
   }
-  filter(term:string):Array<any>{
+  filter(term: string): Array<any>{
     if (!term){
       return this.data;
     }
-    const filtered = this.data.filter(row=>{
+    const filtered = this.data.filter(row => {
       for (const header of this.headers){
          if (row[header.key]?.toString()?.toLowerCase().indexOf(term) >= 0){
             return true;
         }
       }
     });
-    
+
 
   }
 
@@ -45,7 +45,7 @@ sorts = [];
     this.total = this.data?.length;
     this.results$ = this.searchTerm.valueChanges.pipe(
        startWith(''),
-      map(term=>{
+      map(term => {
       return this.filter(term);
     }));
     console.log('ki s');
@@ -53,7 +53,7 @@ sorts = [];
   get term(){
     return this.searchTerm.value;
   }
- 
+
 
 }
 
