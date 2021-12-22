@@ -36,10 +36,12 @@ export class UtilityService {
       return 1;
     }
     let pages = oldPageSize * (page - 1);
-    pages = Math.min(pages, ( Math.trunc(total / oldPageSize) ) * oldPageSize);
-    if (pages === total){
-      pages--;
+    let totalLastPage = Math.trunc(total / oldPageSize);
+    if (totalLastPage * oldPageSize >= total){
+      totalLastPage--;
     }
+    pages = Math.min(pages, totalLastPage * oldPageSize);
+  
     const newPage =  Math.trunc(pages / pageSize) + 1;
 
     return newPage;
