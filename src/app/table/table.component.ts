@@ -28,6 +28,7 @@ sorts = [];
     if (!term){
       return this.data;
     }
+    term = term.toLowerCase();
     const filtered = this.data.filter(row => {
       for (const header of this.headers){
          if (row[header.key]?.toString()?.toLowerCase().indexOf(term) >= 0){
@@ -35,18 +36,19 @@ sorts = [];
         }
       }
     });
-
+    return filtered;
 
   }
 
   ngOnInit(): void {
     console.log(2);
     console.log(1);
+
     this.total = this.data?.length;
     this.results$ = this.searchTerm.valueChanges.pipe(
        startWith(''),
       map(term => {
-      return this.filter(term);
+       return this.filter(term);
     }));
     console.log('ki s');
    }

@@ -15,8 +15,9 @@ export class UtilityService {
     if (!term){
       return arr;
     }
+    term = term.toLowerCase();
+
     return arr.filter(row => {
-      term = term.toLowerCase();
       for (const i of headers){
           if (row[i]?.toLowerCase()?.indexOf(term) >= 0){
               return true;
