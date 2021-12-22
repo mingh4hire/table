@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable,   } from 'rxjs';
 import { startWith , map} from 'rxjs/operators';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-table',
@@ -19,25 +20,15 @@ pageSize = 10;
 total: number;
 results$: Observable<any> ;
 sorts = [];
-  constructor() {
+  constructor(private service: UtilityService) {
   }
   sort(arr: Array<any>, keys: Array<string>){
 
   }
-  filter(term: string): Array<any>{
-    if (!term){
-      return this.data;
-    }
-    term = term.toLowerCase();
-    const filtered = this.data.filter(row => {
-      for (const header of this.headers){
-         if (row[header.key]?.toString()?.toLowerCase().indexOf(term) >= 0){
-            return true;
-        }
-      }
-    });
-    return filtered;
-
+  
+  filter(term: string): Array<any> {
+    const headers = this.headers.map(x => x.key);
+    return this.service.filter(this.data, headers, term);
   }
 
   ngOnInit(): void {

@@ -7,11 +7,12 @@ export class UtilityService {
 
   constructor() { }
 
-  exportToExcel(headers: Array<{key:string, val:string}>, data:Array<any>): void{
+  exportToExcel(headers: Array<{key: string, val: string}>, data: Array<any>): void{
 
   }
 
   filter(arr: Array<any>, headers: Array<string>, term: string): Array<any>{
+
     if (!term){
       return arr;
     }
@@ -19,12 +20,13 @@ export class UtilityService {
 
     return arr.filter(row => {
       for (const i of headers){
-          if (row[i]?.toLowerCase()?.indexOf(term) >= 0){
+          if (row[i]?.toString().toLowerCase()?.indexOf(term) >= 0){
               return true;
           }
       }
     });
   }
+  
   paginate(arr: Array<any>, page: number, pageSize: number): Array<any>{
     if (arr.length < pageSize){
       return arr;

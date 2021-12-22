@@ -175,4 +175,66 @@ fdescribe('UtilityService', () => {
     expect(page).toBe(4);
   });
 
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const colors = [{color: 'green', age: 32},
+    {color: 'blue', age: 11},
+    {color: 'black', age: 15},
+  ];
+    expect(service.filter(colors, headers, 'bl')).toEqual([{color: 'blue', age: 11},
+    {color: 'black', age: 15}]);
+
+
+  });
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const colors = [{color: 'green', age: 32},
+    {color: 'blue', age: 11},
+    {color: 'black', age: 15},
+  ];
+
+    expect(service.filter(colors, headers, 'e')).toEqual([{color: 'blue', age: 11}, {color: 'green', age: 32}]);
+
+  });
+
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const arr = [{color: 'green', age: 32},
+      {color: 'blue', age: 11},
+      {color: 'black', age: 15},
+    ];
+    expect(service.filter(arr, headers, '3')).toEqual([]);
+  });
+
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const arr = [{color: 'green', age: 32},
+    {color: 'blue', age: 11},
+    {color: 'black', age: 15},
+  ];
+
+    expect(service.filter(arr, headers, '')).toEqual(arr);
+
+  });
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const arr = [{color: 'green', age: 32},
+    {color: 'blue', age: 11},
+    {color: 'black', age: 15},
+  ];
+
+    expect(service.filter(arr, headers, null)).toEqual(arr);
+
+  });
+  it('should filter correctly', () => {
+    const headers = ['color', 'age'];
+    const arr = [{color: 'green', age: 32},
+    {color: 'blue', age: 11},
+    {color: 'black', age: 15},
+  ];
+
+    expect(service.filter(arr, headers, 'blue')).toEqual([{color: 'blue', age: 11}]  );
+
+  });
+
 });
