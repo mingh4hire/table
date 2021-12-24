@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
-
-@NgModule({
+import { DatePipe } from '@angular/common';
+ @NgModule({
   declarations: [
     AppComponent,
     TableComponent
@@ -17,9 +17,9 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

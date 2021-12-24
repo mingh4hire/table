@@ -7,41 +7,77 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'abc';
-  headers = [{val: 'color', key: 'color'}, {val: 'Age', key: 'age'}];
+  headers = [{val: 'color', key: 'color', action: function(row){ alert(row.color); }},
+   {val: 'Age', key: 'age'}, {val:'Date', key:'date'}];
   data = [{
-    color: 'Blue', age: 234
+    color: 'Blue', age: 234, date: new Date(2011,2,3)
   }, {
-    color: 'Orange', age: 123
+    color: 'Orange', age: 123, date: new Date(2011,3,3)
   }, {
-    color: 'Yellow', age: 444
+    color: 'Yellow', age: 444, date: new Date(2013,5,3)
   }, {
-    color: 'Black', age: 9
+    color: 'Black', age: 9, date: new Date(2011,2,5)
   }, {
-    color: 'Red', age: 8
+    color: 'Red', age: 8, date: new Date(2011,2,7)
   }, {
-    color: 'Green', age: 6
+    color: 'Green', age: 6, date: new Date(2011,2,22)
   }, {
-    color: 'Grey', age: 4
+    color: 'Grey', age: 4, date: new Date(2011,2,22)
   }, {
-    color: 'Pink', age: 3
+    color: 'Pink', age: 3, date: new Date(2011,2,11)
   }, {
-    color: 'Purple', age: 1
+    color: 'Purple', age: 1, date: new Date(2015,2,3)
   }, {
-    color: null, age: 15
+    color: null, age: 15, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 12
+    color: 'null', age: 12, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 14
+    color: 'null', age: 14, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 13
+    color: 'null', age: 13, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 19
+    color: 'null', age: 19, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 21
+    color: 'null', age: 21, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 34
+    color: 'null', age: 34, date: new Date(2011,2,3)
   }, {
-    color: 'null', age: 44
+    color: 'null', age: 44, date: new Date(2011,2,3)
+  },
+  {
+    color: 'Blue', age: 234, date: new Date(2011,2,3)
+  }, {
+    color: 'Orange', age: 123, date: new Date(2011,3,3)
+  }, {
+    color: 'Yellow', age: 444, date: new Date(2013,5,3)
+  }, {
+    color: 'Black', age: 9, date: new Date(2011,2,5)
+  }, {
+    color: 'Red', age: 8, date: new Date(2011,2,7)
+  }, {
+    color: 'Green', age: 6, date: new Date(2011,2,22)
+  }, {
+    color: 'Grey', age: 4, date: new Date(2011,2,22)
+  }, {
+    color: 'Pink', age: 3, date: new Date(2011,2,11)
+  }, {
+    color: 'Purple', age: 1, date: new Date(2015,2,3)
+  }, {
+    color: null, age: 15, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 12, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 14, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 13, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 19, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 21, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 34, date: new Date(2011,2,3)
+  }, {
+    color: 'null', age: 44, date: new Date(2011,2,3)
   }
 ];
 }

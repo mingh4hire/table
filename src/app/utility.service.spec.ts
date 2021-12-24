@@ -20,6 +20,7 @@ fdescribe('UtilityService', () => {
   {fruit: 'banana', color: 'green'},
   {fruit: 'apple', color: 'red'}
   ];
+
   const arrWithMultiNulls = [
     {fruit: 'watermelon', color: 'red'},
     {fruit: null, color: 'red'},
@@ -29,7 +30,7 @@ fdescribe('UtilityService', () => {
   {fruit: 'banana', color: 'green'},
   {fruit: 'apple', color: 'red'}
   ];
-
+ 
   const keys = ['fruit', 'color'];
 
   beforeEach(() => {
@@ -52,7 +53,7 @@ fdescribe('UtilityService', () => {
   });
 
   it('should sort descending', () => {
-    expect(service.sort(arr, keys, false)).toEqual([
+    expect(service.sort(arr, keys, [false])).toEqual([
       {fruit: 'apple', color: 'red'},
       {fruit: 'banana', color: 'green'},
       {fruit: 'banana', color: 'yellow'},
@@ -85,7 +86,7 @@ fdescribe('UtilityService', () => {
   });
 
   it('should sort descending with multi nulls', () => {
-     expect(service.sort(arrWithMultiNulls, keys, false)).toEqual(
+     expect(service.sort(arrWithMultiNulls, keys, [false])).toEqual(
        [...[
       {fruit: 'apple', color: 'red'},
       {fruit: 'banana', color: 'green'},
@@ -193,7 +194,7 @@ fdescribe('UtilityService', () => {
     {color: 'black', age: 15},
   ];
 
-    expect(service.filter(colors, headers, 'e')).toEqual([{color: 'blue', age: 11}, {color: 'green', age: 32}]);
+    expect(service.filter(colors, headers, 'e')).toEqual([{color: 'green', age: 32},{color: 'blue', age: 11}]);
 
   });
 
@@ -203,7 +204,7 @@ fdescribe('UtilityService', () => {
       {color: 'blue', age: 11},
       {color: 'black', age: 15},
     ];
-    expect(service.filter(arr, headers, '3')).toEqual([]);
+    expect(service.filter(arr, headers, '3')).toEqual([{color: 'green', age: 32}]);
   });
 
   it('should filter correctly', () => {
@@ -235,6 +236,15 @@ fdescribe('UtilityService', () => {
 
     expect(service.filter(arr, headers, 'blue')).toEqual([{color: 'blue', age: 11}]  );
 
+  });
+
+  it('isDate is true', ()=>{
+    expect(service.isDate(new Date()) ).toBe(true);
+  });
+
+
+  it('isDate is false', ()=>{
+    expect(service.isDate(23432) ).toBe(false);
   });
 
 });
