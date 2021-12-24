@@ -78,6 +78,67 @@ export class AppComponent {
     color: 'null', age: 34, date: new Date(2011,2,3)
   }, {
     color: 'null', age: 44, date: new Date(2011,2,3)
+  }, {
+    color: 'amrarillo', age: 44, date: new Date(2004,2,3)
+  }, {
+    color: 'magenta', age: 12, date: new Date(2004,2,3)
+  }, {
+    color: 'gris', age: 55, date: new Date(2004,2,3)
+  }, {
+    color: 'gris', age: 55, date: new Date(2004,2,3)
+  }, {
+    color: 'oceanblue', age: 55, date: new Date(2023,2,3)
+  }, {
+    color: 'gris', age: 55, date: new Date(2004,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'gris', age: 11, date: new Date(2015,2,3)
+  }, {
+    color: 'navygrey', age: 11, date: new Date(2015,2,3)
   }
 ];
+  constructor(){
+    console.log(this.data);
+  }
 }

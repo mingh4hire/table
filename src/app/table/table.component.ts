@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   total: number;
   results$: Observable<any>;
   sorts = [];
-  dirs = {asc: 'desc', desc: '', '':'asc'};
+  dirs = {asc: 'desc', desc: '', '': 'asc'};
   oldPageSize = 10;
   constructor(private service: UtilityService, private datePipe: DatePipe) {
   }
@@ -32,26 +32,30 @@ export class TableComponent implements OnInit {
 
   sortBy(key: string, event){
     const withCtrlKey = event.metaKey || event.ctrlKey;
-    const sortObject =this.sorts.find(x=>x.key === key);
+    const sortObject = this.sorts.find(x => x.key === key);
     if (sortObject){
       sortObject.dir = this.dirs[sortObject.dir];
     }
     else{
       if (withCtrlKey){
-           this.sorts.push({dir: 'asc', key: key});
+           this.sorts.push({dir: 'asc', key});
       }
-      else{     
-          this.sorts = [{dir:'asc',key:key}];
+      else{
+          this.sorts = [{dir: 'asc', key}];
       }
-    }        
+    }
     this.searchTerm.setValue(this.term);
   }
 
-  filter(term: string): Array<any> {  
+  filter(term: string): Array<any> {
     const headers = this.headers.map(x => x.key);
     const filtered = this.service.filter(this.data, headers, term);
-    const sorted = this.service.sort([...this.data], this.sorts.map(x=>x.key), 
-      this.sorts.map(x=>x.dir ===  'asc' ? true : (x.dir === 'desc' ? false  : null) ));  
+    if (filtered.length < this.page * this.pageSize){
+      this.page = 1;
+
+    }
+    const sorted = this.service.sort([...filtered], this.sorts.map(x => x.key),
+      this.sorts.map(x => x.dir ===  'asc' ? true : (x.dir === 'desc' ? false  : null) ));
     if (this.pageSize === null){
       this.oldPageSize = null;
       return sorted;
@@ -66,7 +70,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
- 
+
     this.total = this.data?.length;
     this.results$ = this.searchTerm.valueChanges.pipe(
       startWith(''),
@@ -81,20 +85,20 @@ export class TableComponent implements OnInit {
   }
 
   getSortByKey(key: string){
-    return this.sorts.find(x=>x.key === key);
+    return this.sorts.find(x => x.key === key);
   }
 
   toDate(date: Date){
-    return this.datePipe.transform(date, 'MM-dd-yyyy');
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 
-  isDate(data : any): boolean{
+  isDate(data: any): boolean{
     return this.service.isDate(data);
   }
 
-  changePageSize(event){    
-        
-    this.searchTerm.setValue(this.term);    
+  changePageSize(event){
+
+    this.searchTerm.setValue(this.term);
   }
 }
 

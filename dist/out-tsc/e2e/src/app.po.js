@@ -1,0 +1,15 @@
+import * as tslib_1 from "tslib";
+import { browser, by, element } from 'protractor';
+export class AppPage {
+    navigateTo() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            return browser.get(browser.baseUrl);
+        });
+    }
+    getTitleText() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            return element(by.css('app-root .content span')).getText();
+        });
+    }
+}
+//# sourceMappingURL=app.po.js.map

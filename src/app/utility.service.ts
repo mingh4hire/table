@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class UtilityService {
 
-  constructor() { }
+  constructor(private datePipe: DatePipe) { }
 
   exportToExcel(headers: Array<{key: string, val: string}>, data: Array<any>): void{
 
@@ -20,6 +21,12 @@ export class UtilityService {
 
     return arr.filter(row => {
       for (const i of headers){
+          if (this.isDate(row[i])){
+            if (this.datePipe.transform(row[i], 'yyyy-MM-dd').indexOf(term) >= 0){
+              return true;
+            }
+            continue;
+          }
           if (row[i]?.toString().toLowerCase()?.indexOf(term) >= 0){
               return true;
           }
